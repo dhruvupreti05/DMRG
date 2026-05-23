@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 MAY 2026 21:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 MAY 2026 21:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -802,6 +802,7 @@ Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
 \tcb@totalupperbox=\box87
 \tcb@totallowerbox=\box88
 )
+(./codeblocks.tex)
 (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count360
@@ -810,24 +811,24 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 No file main.aux.
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count361
@@ -850,7 +851,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 24.
+Package hyperref Info: Link coloring OFF on input line 7.
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
@@ -865,13 +866,13 @@ Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks46
 \inpenc@posthook=\toks47
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 12.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 12.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -879,16 +880,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 LaTeX Warning: Hyper reference `subsec:idmrg' on page 1 undefined on input line
- 52.
+ 35.
 
 
 LaTeX Warning: Hyper reference `subsec:idmrg' on page 1 undefined on input line
- 52.
+ 35.
 
 <figures/fig1.png, id=8, 821.0675pt x 285.065pt>
 File: figures/fig1.png Graphic file (type png)
 <use figures/fig1.png>
-Package pdftex.def Info: figures/fig1.png  used on input line 61.
+Package pdftex.def Info: figures/fig1.png  used on input line 44.
 (pdftex.def)             Requested size: 328.82707pt x 114.16316pt.
 
 
@@ -900,7 +901,7 @@ Package pdftex.def Info: figures/fig1.png  used on input line 61.
 } <./figures/fig1.png>]
 
 [3]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 174
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 157
 .
  (/usr/local/texlive/2025/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
@@ -911,19 +912,19 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 \pydata@fh@_FAD58DE7366495DB4650CFEFAC2FCD61.data.minted=\write7
 \openout7 = `_FAD58DE7366495DB4650CFEFAC2FCD61.data.minted'.
 
-runsystem(latexminted config  --timestamp 20260522213133 FAD58DE7366495DB4650CF
+runsystem(latexminted config  --timestamp 20260522214025 FAD58DE7366495DB4650CF
 EFAC2FCD61)...executed safely (allowed).
 
 
 (./_FAD58DE7366495DB4650CFEFAC2FCD61.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20260522213133 FAD58DE7366495DB4
+runsystem(latexminted cleanconfig  --timestamp 20260522214025 FAD58DE7366495DB4
 650CFEFAC2FCD61)...executed safely (allowed).
 
 \minted@intempfile=\read5
 \openout7 = `_FAD58DE7366495DB4650CFEFAC2FCD61.data.minted'.
 
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 204.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 187.
 \openout6 = `main.listing'.
 
 
@@ -961,7 +962,7 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
 [6]
 
 [7]
-runsystem(latexminted batch  --timestamp 20260522213133 FAD58DE7366495DB4650CFE
+runsystem(latexminted batch  --timestamp 20260522214025 FAD58DE7366495DB4650CFE
 FAC2FCD61)...executed safely (allowed).
 
  (./main.aux)
@@ -986,10 +987,10 @@ Package rerunfilecheck Info: Checksums for `main.out':
 (rerunfilecheck)             After:  86C6AD55F98CEF6D134A757BD96D9E60;1678.
  ) 
 Here is how much of TeX's memory you used:
- 29216 strings out of 473190
- 600317 string characters out of 5715801
- 1067511 words of memory out of 5000000
- 51972 multiletter control sequences out of 15000+600000
+ 29224 strings out of 473190
+ 600469 string characters out of 5715801
+ 1067526 words of memory out of 5000000
+ 51977 multiletter control sequences out of 15000+600000
  571060 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  95i,12n,101p,1536b,788s stack positions out of 10000i,1000n,20000p,200000b,200000s

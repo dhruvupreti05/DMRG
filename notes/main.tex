@@ -2,24 +2,7 @@
 \usepackage{amsmath, amssymb, fullpage, braket, graphicx, mathtools, xcolor, minted, tcolorbox, pifont, multirow, hyperref, bbm}
 \tcbuselibrary{listingsutf8, minted, breakable}
 
-\newtcblisting{python}{
-  listing engine=minted,
-  colback=gray!10,
-  colframe=gray!40,
-  boxsep=4pt,
-  arc=2pt,
-  outer arc=2pt,
-  top=2pt, bottom=2pt, left=4pt, right=4pt,
-  listing only,
-  breakable,            
-  minted language=python,
-  minted options={
-    linenos=false,
-    breaklines=true,    
-    fontsize=\small,
-    autogobble=true
-  },
-}
+\input{codeblocks}
 
 \begin{document}
 
@@ -435,7 +418,7 @@ def ground_state_energy_spinchain(L, m_keep=16, sweeps=12):
             "svd_min": 0.0       # avoid dropping singular values by magnitude cutoff 
         },  
         "mixer": True,           # add noise/mixer to escape local minima at low chi
-        "max_sweeps": sweeps,    # number of left↔right sweeps
+        "max_sweeps": sweeps,    # number of left right sweeps
         "verbose": 1,            # print basic progress
     }
 

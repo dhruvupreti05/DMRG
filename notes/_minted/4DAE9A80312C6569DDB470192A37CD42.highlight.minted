@@ -22,7 +22,7 @@
             \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{svd\PYGZus{}min}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mf}{0.0}       \PYG{c+c1}{\PYGZsh{} avoid dropping singular values by magnitude cutoff}
         \PYG{p}{\PYGZcb{}}\PYG{p}{,}
         \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{mixer}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{k+kc}{True}\PYG{p}{,}           \PYG{c+c1}{\PYGZsh{} add noise/mixer to escape local minima at low chi}
-        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{max\PYGZus{}sweeps}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{n}{sweeps}\PYG{p}{,}    \PYG{c+c1}{\PYGZsh{} number of left↔right sweeps}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{max\PYGZus{}sweeps}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{n}{sweeps}\PYG{p}{,}    \PYG{c+c1}{\PYGZsh{} number of left right sweeps}
         \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{verbose}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{1}\PYG{p}{,}            \PYG{c+c1}{\PYGZsh{} print basic progress}
     \PYG{p}{\PYGZcb{}}
 
