@@ -1,0 +1,11 @@
+    L = 8
+    J = 1.0
+    open_boundary = True
+    use_pauli_convention = True
+
+    H = heisenberg_chain(L, J=J, open_boundary=open_boundary,
+                         pauli_convention=use_pauli_convention)
+    E0, psi0 = ground_state(H)
+    print(f"L = {L}, dim = {H.shape[0]}")
+    print(f"Ground-state energy E0 = {E0:.10f}")
+    print(f"Energy per site E0/L = {E0/L:.10f}")

@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{numpy}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{np}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{scipy}\PYG{n+nn}{.}\PYG{n+nn}{sparse}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{sparse}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{scipy}\PYG{n+nn}{.}\PYG{n+nn}{sparse}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{kron}\PYG{p}{,} \PYG{n}{eye} \PYG{p}{,} \PYG{n}{csr\PYGZus{}matrix}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{scipy}\PYG{n+nn}{.}\PYG{n+nn}{sparse}\PYG{n+nn}{.}\PYG{n+nn}{linalg}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{eigsh}\PYG{p}{,} \PYG{n}{eigs}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{scipy}\PYG{n+nn}{.}\PYG{n+nn}{linalg}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{eigh}
+\end{MintedVerbatim}
