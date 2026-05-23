@@ -1,0 +1,75 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{englarge\PYGZus{}block}\PYG{p}{(}\PYG{n}{block}\PYG{p}{:} \PYG{n}{Block}\PYG{p}{,} \PYG{n}{m\PYGZus{}keep}\PYG{p}{:} \PYG{n+nb}{int}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}} \PYG{n+nb}{tuple}\PYG{p}{[}\PYG{n}{Block}\PYG{p}{,} \PYG{n+nb}{float}\PYG{p}{]}\PYG{p}{:}
+\PYG{+w}{    }\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Add one site to block and truncate to m\PYGZus{}keep states using sparse matrices.}
+\PYG{l+s+sd}{    Returns newblock and ground state energy of 4 \PYGZhy{} site superblock.}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+    \PYG{n}{m}\PYG{p}{,} \PYG{n}{d} \PYG{o}{=} \PYG{n}{block}\PYG{o}{.}\PYG{n}{dim}\PYG{p}{,} \PYG{l+m+mi}{2}
+
+    \PYG{c+c1}{\PYGZsh{} (1) Build extended left block (block + new site)}
+    \PYG{c+c1}{\PYGZsh{} Hamiltonian : H\PYGZus{}block I + interactions between block edge and new site}
+    \PYG{n}{H\PYGZus{}left} \PYG{o}{=} \PYG{n}{kron}\PYG{p}{(}\PYG{n}{block}\PYG{o}{.}\PYG{n}{H}\PYG{p}{,} \PYG{n}{Id}\PYG{p}{,} \PYG{n+nb}{format}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{csr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{for} \PYG{n}{Sb}\PYG{p}{,} \PYG{n}{Ss} \PYG{o+ow}{in} \PYG{n+nb}{zip}\PYG{p}{(}\PYG{n}{block}\PYG{o}{.}\PYG{n}{S\PYGZus{}edge}\PYG{p}{,} \PYG{p}{(}\PYG{n}{Sx}\PYG{p}{,} \PYG{n}{Sy}\PYG{p}{,} \PYG{n}{Sz}\PYG{p}{)}\PYG{p}{)}\PYG{p}{:}
+        \PYG{n}{H\PYGZus{}left} \PYG{o}{+}\PYG{o}{=} \PYG{n}{kron}\PYG{p}{(}\PYG{n}{Sb}\PYG{p}{,} \PYG{n}{Ss}\PYG{p}{,} \PYG{n+nb}{format}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{csr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} New right \PYGZhy{} edge operators (acting on the new site)}
+    \PYG{n}{I\PYGZus{}m} \PYG{o}{=} \PYG{n}{eye}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,} \PYG{n+nb}{format}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{csr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{Sx\PYGZus{}R} \PYG{o}{=} \PYG{n}{kron}\PYG{p}{(}\PYG{n}{I\PYGZus{}m}\PYG{p}{,} \PYG{n}{Sx}\PYG{p}{,} \PYG{n+nb}{format}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{csr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{Sy\PYGZus{}R} \PYG{o}{=} \PYG{n}{kron}\PYG{p}{(}\PYG{n}{I\PYGZus{}m}\PYG{p}{,} \PYG{n}{Sy}\PYG{p}{,} \PYG{n+nb}{format}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{csr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{Sz\PYGZus{}R} \PYG{o}{=} \PYG{n}{kron}\PYG{p}{(}\PYG{n}{I\PYGZus{}m}\PYG{p}{,} \PYG{n}{Sz}\PYG{p}{,} \PYG{n+nb}{format}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{csr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{left\PYGZus{}block} \PYG{o}{=} \PYG{n}{Block}\PYG{p}{(}\PYG{n}{m} \PYG{o}{*} \PYG{n}{d}\PYG{p}{,} \PYG{n}{H\PYGZus{}left}\PYG{p}{,} \PYG{p}{(}\PYG{n}{Sx\PYGZus{}R}\PYG{p}{,} \PYG{n}{Sy\PYGZus{}R}\PYG{p}{,} \PYG{n}{Sz\PYGZus{}R}\PYG{p}{)}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} (2) Build environment block (mirror of left block)}
+    \PYG{c+c1}{\PYGZsh{} For reflection symmetry , environment uses same operators as left block}
+    \PYG{n}{env\PYGZus{}block} \PYG{o}{=} \PYG{n}{left\PYGZus{}block}
+    \PYG{n}{mL}\PYG{p}{,} \PYG{n}{mR} \PYG{o}{=} \PYG{n}{left\PYGZus{}block}\PYG{o}{.}\PYG{n}{dim}\PYG{p}{,} \PYG{n}{env\PYGZus{}block}\PYG{o}{.}\PYG{n}{dim} \PYG{c+c1}{\PYGZsh{} mL = mR = 2 * m}
+    \PYG{n}{I\PYGZus{}L} \PYG{o}{=} \PYG{n}{eye}\PYG{p}{(}\PYG{n}{mL}\PYG{p}{,} \PYG{n+nb}{format}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{csr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{I\PYGZus{}R} \PYG{o}{=} \PYG{n}{eye}\PYG{p}{(}\PYG{n}{mR}\PYG{p}{,} \PYG{n+nb}{format}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{csr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} (3) Construct 4 \PYGZhy{} site superblock Hamiltonian}
+    \PYG{n}{H\PYGZus{}super} \PYG{o}{=} \PYG{n}{kron}\PYG{p}{(}\PYG{n}{left\PYGZus{}block}\PYG{o}{.}\PYG{n}{H}\PYG{p}{,} \PYG{n}{I\PYGZus{}R}\PYG{p}{,} \PYG{n+nb}{format}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{csr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Left block Hamiltonian}
+    \PYG{n}{H\PYGZus{}super} \PYG{o}{+}\PYG{o}{=} \PYG{n}{kron}\PYG{p}{(}\PYG{n}{I\PYGZus{}L}\PYG{p}{,} \PYG{n}{env\PYGZus{}block}\PYG{o}{.}\PYG{n}{H}\PYG{p}{,} \PYG{n+nb}{format}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{csr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Environment Hamiltonian}
+
+    \PYG{c+c1}{\PYGZsh{} Coupling between left \PYGZhy{} block ’s right edge and environment ’s left edge}
+    \PYG{k}{for} \PYG{n}{SL}\PYG{p}{,} \PYG{n}{SR} \PYG{o+ow}{in} \PYG{n+nb}{zip}\PYG{p}{(}\PYG{n}{left\PYGZus{}block}\PYG{o}{.}\PYG{n}{S\PYGZus{}edge}\PYG{p}{,} \PYG{n}{env\PYGZus{}block}\PYG{o}{.}\PYG{n}{S\PYGZus{}edge}\PYG{p}{)}\PYG{p}{:}
+        \PYG{n}{H\PYGZus{}super} \PYG{o}{+}\PYG{o}{=} \PYG{n}{kron}\PYG{p}{(}\PYG{n}{SL}\PYG{p}{,} \PYG{n}{SR}\PYG{p}{,} \PYG{n+nb}{format}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{csr}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} (4) Find superblock ground state}
+    \PYG{n}{Evals}\PYG{p}{,} \PYG{n}{Psi} \PYG{o}{=} \PYG{n}{eigsh}\PYG{p}{(}\PYG{n}{H\PYGZus{}super}\PYG{p}{,} \PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{which}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{SA}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{E0}\PYG{p}{,} \PYG{n}{psi0} \PYG{o}{=} \PYG{n}{Evals}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{n}{Psi}\PYG{p}{[}\PYG{p}{:}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}
+
+    \PYG{c+c1}{\PYGZsh{} (5) Compute reduced density matrix}
+    \PYG{c+c1}{\PYGZsh{} Reshape wavefunction to bipartite form and compute density matrix}
+    \PYG{n}{psi\PYGZus{}mat} \PYG{o}{=} \PYG{n}{psi0}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{n}{mL}\PYG{p}{,} \PYG{n}{mR}\PYG{p}{)}
+    \PYG{n}{rho} \PYG{o}{=} \PYG{n}{psi\PYGZus{}mat} \PYG{o}{@} \PYG{n}{psi\PYGZus{}mat}\PYG{o}{.}\PYG{n}{conj}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{T}
+    \PYG{n}{rho} \PYG{o}{=} \PYG{p}{(}\PYG{n}{rho} \PYG{o}{+} \PYG{n}{rho}\PYG{o}{.}\PYG{n}{conj}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{T}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2} \PYG{c+c1}{\PYGZsh{} Ensure Hermiticity}
+
+    \PYG{c+c1}{\PYGZsh{} Diagonalize density matrix and keep largest m\PYGZus{}keep eigenvectors}
+    \PYG{n}{n\PYGZus{}keep} \PYG{o}{=} \PYG{n+nb}{min}\PYG{p}{(}\PYG{n}{m\PYGZus{}keep}\PYG{p}{,} \PYG{n}{mL}\PYG{p}{)}
+    \PYG{n}{evals}\PYG{p}{,} \PYG{n}{U} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{eigh}\PYG{p}{(}\PYG{n}{rho}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Dense diagonalization (small matrix)}
+    \PYG{n}{idx} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{argsort}\PYG{p}{(}\PYG{n}{evals}\PYG{p}{)}\PYG{p}{[}\PYG{p}{:}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{[}\PYG{p}{:}\PYG{n}{n\PYGZus{}keep}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} Descending order}
+    \PYG{n}{Utr} \PYG{o}{=} \PYG{n}{U}\PYG{p}{[}\PYG{p}{:}\PYG{p}{,} \PYG{n}{idx}\PYG{p}{]}
+
+    \PYG{c+c1}{\PYGZsh{} (6) Project operators into truncated basis}
+    \PYG{c+c1}{\PYGZsh{} Convert to dense for efficient small matrix operations}
+    \PYG{n}{Utr\PYGZus{}dense} \PYG{o}{=} \PYG{n}{Utr}
+    \PYG{n}{H\PYGZus{}left\PYGZus{}dense} \PYG{o}{=} \PYG{n}{H\PYGZus{}left}\PYG{o}{.}\PYG{n}{toarray}\PYG{p}{(}\PYG{p}{)}
+    \PYG{n}{Sx\PYGZus{}R\PYGZus{}dense} \PYG{o}{=} \PYG{n}{Sx\PYGZus{}R}\PYG{o}{.}\PYG{n}{toarray}\PYG{p}{(}\PYG{p}{)}
+    \PYG{n}{Sy\PYGZus{}R\PYGZus{}dense} \PYG{o}{=} \PYG{n}{Sy\PYGZus{}R}\PYG{o}{.}\PYG{n}{toarray}\PYG{p}{(}\PYG{p}{)}
+    \PYG{n}{Sz\PYGZus{}R\PYGZus{}dense} \PYG{o}{=} \PYG{n}{Sz\PYGZus{}R}\PYG{o}{.}\PYG{n}{toarray}\PYG{p}{(}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} Perform projections ( dense matrix multiplication )}
+    \PYG{n}{H\PYGZus{}new} \PYG{o}{=} \PYG{n}{Utr\PYGZus{}dense}\PYG{o}{.}\PYG{n}{conj}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{T} \PYG{o}{@} \PYG{n}{H\PYGZus{}left\PYGZus{}dense} \PYG{o}{@} \PYG{n}{Utr\PYGZus{}dense}
+    \PYG{n}{Sx\PYGZus{}new} \PYG{o}{=} \PYG{n}{Utr\PYGZus{}dense}\PYG{o}{.}\PYG{n}{conj}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{T} \PYG{o}{@} \PYG{n}{Sx\PYGZus{}R\PYGZus{}dense} \PYG{o}{@} \PYG{n}{Utr\PYGZus{}dense}
+    \PYG{n}{Sy\PYGZus{}new} \PYG{o}{=} \PYG{n}{Utr\PYGZus{}dense}\PYG{o}{.}\PYG{n}{conj}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{T} \PYG{o}{@} \PYG{n}{Sy\PYGZus{}R\PYGZus{}dense} \PYG{o}{@} \PYG{n}{Utr\PYGZus{}dense}
+    \PYG{n}{Sz\PYGZus{}new} \PYG{o}{=} \PYG{n}{Utr\PYGZus{}dense}\PYG{o}{.}\PYG{n}{conj}\PYG{p}{(}\PYG{p}{)}\PYG{o}{.}\PYG{n}{T} \PYG{o}{@} \PYG{n}{Sz\PYGZus{}R\PYGZus{}dense} \PYG{o}{@} \PYG{n}{Utr\PYGZus{}dense}
+
+    \PYG{c+c1}{\PYGZsh{} Convert results back to sparse format}
+    \PYG{n}{H\PYGZus{}new} \PYG{o}{=} \PYG{n}{csr\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{H\PYGZus{}new}\PYG{p}{)}
+    \PYG{n}{Sx\PYGZus{}new} \PYG{o}{=} \PYG{n}{csr\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{Sx\PYGZus{}new}\PYG{p}{)}
+    \PYG{n}{Sy\PYGZus{}new} \PYG{o}{=} \PYG{n}{csr\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{Sy\PYGZus{}new}\PYG{p}{)}
+    \PYG{n}{Sz\PYGZus{}new} \PYG{o}{=} \PYG{n}{csr\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{Sz\PYGZus{}new}\PYG{p}{)}
+
+    \PYG{k}{return} \PYG{n}{Block}\PYG{p}{(}\PYG{n}{n\PYGZus{}keep}\PYG{p}{,} \PYG{n}{H\PYGZus{}new}\PYG{p}{,} \PYG{p}{(}\PYG{n}{Sx\PYGZus{}new}\PYG{p}{,} \PYG{n}{Sy\PYGZus{}new}\PYG{p}{,} \PYG{n}{Sz\PYGZus{}new}\PYG{p}{)}\PYG{p}{)}\PYG{p}{,} \PYG{n}{E0}
+\end{MintedVerbatim}

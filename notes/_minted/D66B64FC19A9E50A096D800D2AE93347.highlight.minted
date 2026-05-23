@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Run DMRG calculation}
+\PYG{n}{energies} \PYG{o}{=} \PYG{n}{infinite\PYGZus{}dmrg}\PYG{p}{(}\PYG{n}{L\PYGZus{}target} \PYG{o}{=} \PYG{l+m+mi}{20}\PYG{p}{,} \PYG{n}{m\PYGZus{}keep}\PYG{o}{=}\PYG{l+m+mi}{24}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Final energy density: }\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{energies}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
+\end{MintedVerbatim}
