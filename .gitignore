@@ -16,5 +16,6 @@ _*
 *.nav
 *.snm
 *.vrb
+*.listing
 
 *.so
