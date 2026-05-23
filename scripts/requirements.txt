@@ -1,0 +1,6 @@
+ipykernel
+numpy 
+matplotlib
+scipy
+gudhi
+pybind11
